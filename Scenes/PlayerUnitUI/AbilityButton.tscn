@@ -1,0 +1,48 @@
+[gd_scene load_steps=3 format=3 uid="uid://cbk27r1of1abx"]
+
+[ext_resource type="Theme" uid="uid://cnjtetudthuan" path="res://addons/windows_95_theme/save1.tres" id="1_5xj1a"]
+[ext_resource type="Script" path="res://Scenes/PlayerUnitUI/AbilityButton.gd" id="2_lq5r7"]
+
+[node name="AbilityButton" type="Panel"]
+custom_minimum_size = Vector2(100, 100)
+theme = ExtResource("1_5xj1a")
+script = ExtResource("2_lq5r7")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Button" type="Button" parent="MarginContainer"]
+layout_mode = 2
+text = "walk"
+
+[node name="AbilityCounter" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_left = 63.0
+offset_top = -3.0
+offset_right = 103.0
+offset_bottom = 37.0
+
+[node name="Panel" type="Panel" parent="AbilityCounter"]
+layout_mode = 2
+
+[node name="CountShown" type="RichTextLabel" parent="AbilityCounter/Panel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "[center]1[/center]"
+
+[connection signal="pressed" from="MarginContainer/Button" to="." method="_on_button_pressed"]

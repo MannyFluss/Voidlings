@@ -1,0 +1,43 @@
+[gd_scene load_steps=3 format=3 uid="uid://i70670a3mcs2"]
+
+[ext_resource type="Theme" uid="uid://cnjtetudthuan" path="res://addons/windows_95_theme/save1.tres" id="1_h3h5c"]
+[ext_resource type="Script" path="res://Scenes/MainMenu/LevelSelectionMenu/LevelSelectionButton/LevelSelectionButton.gd" id="2_fcipt"]
+
+[node name="LevelSelectionButton" type="Control"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1047.0
+offset_bottom = -536.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_h3h5c")
+script = ExtResource("2_fcipt")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="Button" type="Button" parent="Panel/MarginContainer"]
+layout_mode = 2
+text = "1."
+
+[connection signal="pressed" from="Panel/MarginContainer/Button" to="." method="_on_button_pressed"]

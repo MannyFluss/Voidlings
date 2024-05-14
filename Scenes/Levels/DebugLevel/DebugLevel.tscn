@@ -1,0 +1,47 @@
+[gd_scene load_steps=8 format=3 uid="uid://dbigxjc53ra18"]
+
+[ext_resource type="Texture2D" uid="uid://cyhulhjhp0c3f" path="res://icon.svg" id="1_e8rox"]
+[ext_resource type="Script" path="res://Scenes/InputController/InputManager.gd" id="2_wufhl"]
+[ext_resource type="Theme" uid="uid://cnjtetudthuan" path="res://addons/windows_95_theme/save1.tres" id="3_1qcr1"]
+[ext_resource type="PackedScene" uid="uid://dd8wtyqsccl2q" path="res://Scenes/ObjectivePopup/ObjectivePopup.tscn" id="4_gxtsk"]
+[ext_resource type="PackedScene" uid="uid://ba70q3yvqbiej" path="res://Scenes/PlayerUnitUI/PlayerUnitUI.tscn" id="5_0j08c"]
+[ext_resource type="PackedScene" uid="uid://1fvpe4r88h4u" path="res://Scenes/Voidling/Voidling.tscn" id="5_4uf5p"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_mlpn3"]
+vertices = PackedVector2Array(1146, 637, 9, 637, 9, 12, 1144, 10)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-1, 3, 0, 648, 1157, 647, 1154, 0)])
+source_geometry_group_name = &"navigation_polygon_source_group"
+
+[node name="DebugLevel" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(618, 319)
+texture = ExtResource("1_e8rox")
+
+[node name="InputManager" type="Node2D" parent="."]
+script = ExtResource("2_wufhl")
+
+[node name="UILayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="UILayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme = ExtResource("3_1qcr1")
+
+[node name="ObjectivePopup" parent="UILayer/Control" instance=ExtResource("4_gxtsk")]
+layout_mode = 1
+
+[node name="PlayerUnitUI" parent="UILayer/Control" instance=ExtResource("5_0j08c")]
+layout_mode = 1
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_mlpn3")
+
+[node name="Voidling" parent="." instance=ExtResource("5_4uf5p")]
+position = Vector2(445, 253)

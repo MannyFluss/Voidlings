@@ -1,0 +1,80 @@
+[gd_scene load_steps=8 format=3 uid="uid://dpsv57ajcntpu"]
+
+[ext_resource type="Theme" uid="uid://cnjtetudthuan" path="res://addons/windows_95_theme/save1.tres" id="1_mqtvk"]
+[ext_resource type="Shader" path="res://Scenes/MainMenu/main_menu.gdshader" id="1_qfweu"]
+[ext_resource type="Script" path="res://Scenes/MainMenu/MainMenu.gd" id="2_lphtt"]
+[ext_resource type="Script" path="res://Scenes/MainMenu/MainMenuText.gd" id="3_l24ru"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_j7o00"]
+shader = ExtResource("1_qfweu")
+
+[sub_resource type="Gradient" id="Gradient_h5hvg"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_qhjlq"]
+gradient = SubResource("Gradient_h5hvg")
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_mqtvk")
+script = ExtResource("2_lphtt")
+
+[node name="BackGround" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_j7o00")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture1D_qhjlq")
+
+[node name="CenterDivider" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterVbox" type="VBoxContainer" parent="CenterDivider"]
+layout_mode = 2
+alignment = 1
+
+[node name="LevelSelect" type="Button" parent="CenterDivider/CenterVbox"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Level Select"
+
+[node name="MainMenuText" type="TextEdit" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -212.5
+offset_top = 65.0
+offset_right = 212.5
+offset_bottom = 189.0
+grow_horizontal = 2
+text = "Hello and Welcome to Voidlings . . ."
+script = ExtResource("3_l24ru")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+visible = false
+layout_mode = 0
+offset_left = -14.0
+offset_top = 73.0
+offset_right = 313.0
+offset_bottom = 311.0
+bbcode_enabled = true
+text = "[img]res://icon.svg[/img]"

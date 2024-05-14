@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dnwrmsx8d8wn1"]
+
+[ext_resource type="Script" path="res://Scenes/Entity/EntityAbilities/WalkAbility/WalkAbility.gd" id="1_wl24o"]
+
+[node name="WalkAbility" type="Node2D"]
+script = ExtResource("1_wl24o")

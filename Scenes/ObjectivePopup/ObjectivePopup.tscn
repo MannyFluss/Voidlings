@@ -1,0 +1,58 @@
+[gd_scene load_steps=4 format=3 uid="uid://dd8wtyqsccl2q"]
+
+[ext_resource type="Script" path="res://Scenes/MainMenu/MainMenuText.gd" id="1_nuq8d"]
+[ext_resource type="Theme" uid="uid://cnjtetudthuan" path="res://addons/windows_95_theme/save1.tres" id="1_nx2hl"]
+[ext_resource type="Script" path="res://Scenes/ObjectivePopup/ObjectivePopup.gd" id="2_uymsl"]
+
+[node name="ObjectivePopup" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -299.0
+offset_top = -48.0
+offset_right = 299.0
+offset_bottom = 48.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_nx2hl")
+script = ExtResource("2_uymsl")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ObjectiveContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ObjectiveContainer"]
+layout_mode = 2
+
+[node name="CTypingTextEdit" type="TextEdit" parent="ObjectiveContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 3.0
+text = "Objective: Step On the Button..."
+editable = false
+script = ExtResource("1_nuq8d")
+
+[node name="AcceptTaskButton" type="Button" parent="ObjectiveContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Accept Task"

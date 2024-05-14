@@ -1,0 +1,93 @@
+[gd_scene load_steps=5 format=3 uid="uid://b3acfunl1swh4"]
+
+[ext_resource type="Script" path="res://Scenes/MainMenu/LevelSelectionMenu/LevelSelection.gd" id="1_i2kng"]
+[ext_resource type="Theme" uid="uid://cnjtetudthuan" path="res://addons/windows_95_theme/save1.tres" id="1_p27s5"]
+[ext_resource type="Script" path="res://Scenes/MainMenu/MainMenuText.gd" id="2_tb7c7"]
+[ext_resource type="PackedScene" uid="uid://i70670a3mcs2" path="res://Scenes/MainMenu/LevelSelectionMenu/LevelSelectionButton/LevelSelectionButton.tscn" id="4_t1wmc"]
+
+[node name="LevelSelection" type="CanvasLayer"]
+script = ExtResource("1_i2kng")
+
+[node name="FullScreen" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_p27s5")
+
+[node name="PopUpContainer" type="Control" parent="FullScreen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 163.0
+offset_top = 57.0
+offset_right = -163.0
+offset_bottom = -57.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BackgroundPanel" type="Panel" parent="FullScreen/PopUpContainer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="FullScreen/PopUpContainer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="VBoxContainer" type="VBoxContainer" parent="FullScreen/PopUpContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="FullScreen/PopUpContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 2
+
+[node name="CloseMenu" type="Button" parent="FullScreen/PopUpContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Close Menu"
+
+[node name="CTypingTextEdit" type="TextEdit" parent="FullScreen/PopUpContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Level Selection . . ."
+script = ExtResource("2_tb7c7")
+
+[node name="GridContainer" type="GridContainer" parent="FullScreen/PopUpContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 5.72
+columns = 5
+
+[node name="LevelSelectionButton" parent="FullScreen/PopUpContainer/MarginContainer/VBoxContainer/GridContainer" instance=ExtResource("4_t1wmc")]
+layout_mode = 2
+levelToLoad = "res://Scenes/Levels/DebugLevel/DebugLevel.tscn"
+
+[node name="Button" parent="FullScreen/PopUpContainer/MarginContainer/VBoxContainer/GridContainer/LevelSelectionButton/Panel/MarginContainer" index="0"]
+text = "Debug."
+
+[node name="LevelSelectionButton2" parent="FullScreen/PopUpContainer/MarginContainer/VBoxContainer/GridContainer" instance=ExtResource("4_t1wmc")]
+layout_mode = 2
+
+[node name="Button" parent="FullScreen/PopUpContainer/MarginContainer/VBoxContainer/GridContainer/LevelSelectionButton2/Panel/MarginContainer" index="0"]
+text = "2."
+
+[connection signal="pressed" from="FullScreen/PopUpContainer/MarginContainer/VBoxContainer/HBoxContainer/CloseMenu" to="." method="_on_close_menu_pressed"]
+
+[editable path="FullScreen/PopUpContainer/MarginContainer/VBoxContainer/GridContainer/LevelSelectionButton"]
+[editable path="FullScreen/PopUpContainer/MarginContainer/VBoxContainer/GridContainer/LevelSelectionButton2"]

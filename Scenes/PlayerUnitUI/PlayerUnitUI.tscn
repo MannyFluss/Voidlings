@@ -1,0 +1,52 @@
+[gd_scene load_steps=3 format=3 uid="uid://ba70q3yvqbiej"]
+
+[ext_resource type="Theme" uid="uid://cnjtetudthuan" path="res://addons/windows_95_theme/save1.tres" id="1_e85fy"]
+[ext_resource type="Script" path="res://Scenes/PlayerUnitUI/PlayerUnitUI.gd" id="2_2xk6c"]
+
+[node name="PlayerUnitUI" type="Control"]
+layout_mode = 3
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -400.0
+offset_top = -121.0
+offset_right = 400.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("1_e85fy")
+script = ExtResource("2_2xk6c")
+
+[node name="Panel" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="AvailableAbilitiesContainer" type="HBoxContainer" parent="MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+alignment = 1
+
+[node name="AbilityButton" parent="MarginContainer/AvailableAbilitiesContainer" instance_placeholder="res://Scenes/PlayerUnitUI/AbilityButton.tscn"]
+layout_mode = 2
+
+[connection signal="child_entered_tree" from="MarginContainer/AvailableAbilitiesContainer" to="." method="_on_available_abilities_container_child_entered_tree"]
+[connection signal="child_exiting_tree" from="MarginContainer/AvailableAbilitiesContainer" to="." method="_on_available_abilities_container_child_exiting_tree"]
